@@ -1,0 +1,42 @@
+<div class="popups confirmation">
+  <h1 mat-dialog-title>{{data.Title}}</h1>
+  <div mat-dialog-content>
+
+   
+      <label class="form-label" [innerHTML]="data.InputTitle"></label>
+      <div class="table-responsive w-100 px-3">
+        <table class="table w-100" >
+          <thead>
+            <tr>
+              <th>Sr</th>
+              <th>Container No </th>
+              <th> Rrder No</th>
+              <th> Reference</th>
+              <th> Order Type</th>
+              <th> Leg Type</th>
+              <th> Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of containerList; track $index) {
+            <tr>
+              <th>{{$index+1}}</th>
+              <th>{{item.containerNo}} </th>
+              <th>{{item.orderNo}} </th>
+              <th>{{item.orderNo}} refNo</th>
+              <th>{{item.orderNo}} orderType</th>
+              <th>{{item.orderNo}} legType</th>
+              <th>{{item.orderNo}} status</th>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+   
+
+  </div>
+  <div mat-dialog-actions class="pe-4">
+
+    <button (click)="btnOK()" mat-flat-button color="primary" class="primary" cdkFocusInitial> OK</button>
+  </div>
+</div>

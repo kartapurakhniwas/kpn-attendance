@@ -1,0 +1,49 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+#header { 
+    height: $header_height;
+    background-color: #ffffff;
+    padding: 0 10px;
+    padding-left: 76px;
+    @include d-flex-all;
+    // @include box-shadow;
+    .left {
+        h2 {
+            color: #0f172a;
+            font-size: 17px;
+            font-weight: 700;
+        }
+    }
+    .right {
+        display: flex;
+        align-items: center;
+        .mid-divider {
+            display: inline-block;
+            width: 2px;
+            background: $light_grey_color;
+            height: 30px;
+            margin: 0 12px;
+        }
+        a {
+            font-size: 13px;
+            font-weight: 600;
+            color: $light-text;
+            margin-left: 12px;
+            margin-right: 12px;
+            transition: 0.5s;
+        }
+        :hover {
+            color:#333;
+        }
+        .mat-icon {
+            color: $ultra-light-text;
+        }
+        .count-badge {
+            position: absolute;
+            top: 7px;
+            right: 3px;
+        }
+    }
+}

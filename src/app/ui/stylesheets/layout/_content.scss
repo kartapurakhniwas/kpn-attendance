@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the Master layout of the site/application.
+// -----------------------------------------------------------------------------
+
+#sidebar.collapsed ~ #content-wrap {
+    padding-left: $sidebar_width_collapsed !important;
+}
+
+#content-wrap {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f1f5f9;
+    padding-left: $sidebar_width;
+    position: relative;
+    overflow-x: hidden;
+    @include transition;
+    .inner-content-wrap {
+        padding: 15px;
+        height: calc(100vh - $header_height);
+        overflow-y: auto;
+        overflow-x: hidden;
+        &.full-width {
+            padding-right: 10px;
+        }
+        .card {
+            padding: 32px 15px;
+            background: white;
+            border-radius: 10px;
+        }
+    }
+    .btn-flow {
+        position: absolute;
+        bottom: 84px;
+        right: 20px;
+        z-index: 9999999;
+        button {
+            display: block;
+            margin-top: 15px;
+            height: 51px;
+            width: 51px;
+            @include d-flex-center;
+            .ki-duotone {
+                font-size: 20px;
+                margin-top: 4px;
+            }
+        }
+    }
+}

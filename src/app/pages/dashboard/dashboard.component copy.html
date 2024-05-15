@@ -1,0 +1,233 @@
+<div id="header">
+    <div class="left">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="right">
+
+    </div>
+</div>
+
+<div class="inner-content-wrap" id="dashboard">
+    <div class="headtitle">
+        <div class="left">
+            <img src="../../../assets/images/company.png" alt="">
+            <div>
+                <h1>Welcome, Super Sonic Transport</h1>
+                <p><i class="ki-duotone ki-notification-on">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                        <span class="path4"></span>
+                        <span class="path5"></span>
+                    </i> You have 2 new messages and 15 new tasks</p>
+            </div>
+        </div>
+        <div class="right">
+            <button mat-flat-button color="secondary" class="secondary"> <i class="ki-duotone ki-messages">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                    <span class="path3"></span>
+                    <span class="path4"></span>
+                    <span class="path5"></span>
+                </i> Message</button>
+            <button mat-flat-button color="primary" class="primary"> <i class="ki-duotone ki-setting-2">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                </i> Settings</button>
+        </div>
+    </div>
+    <div class="dashbody">
+        <mat-tab-group>
+            <mat-tab label="Home">
+                <div class="row mt-4">
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="title">
+                                <p class="m-0">Trucks</p>
+                                <button [matMenuTriggerFor]="menu" mat-icon-button class="action-btn">
+                                    <i class="ki-duotone ki-dots-horizontal"> <span class="path1"></span> <span
+                                            class="path2"></span> <span class="path3"></span></i>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before" class="list-pb-0">
+                                    <button mat-menu-item>Item 1</button>
+                                    <button mat-menu-item>Item 2</button>
+                                </mat-menu>
+                            </div>
+                            <h1>21</h1>
+                            <p class="mention">Assigned Trucks</p>
+                            <p class="status">Idle Trucks: <span>13</span></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card red">
+                            <div class="title ">
+                                <p class="m-0">Drivers</p>
+                                <button [matMenuTriggerFor]="menu" mat-icon-button class="action-btn">
+                                    <i class="ki-duotone ki-dots-horizontal"> <span class="path1"></span> <span
+                                            class="path2"></span> <span class="path3"></span></i>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before" class="list-pb-0">
+                                    <button mat-menu-item>Item 1</button>
+                                    <button mat-menu-item>Item 2</button>
+                                </mat-menu>
+                            </div>
+                            <h1>17</h1>
+                            <p class="mention">Assigned Drivers</p>
+                            <p class="status">Idle Drivers: <span>16</span></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card yellow">
+                            <div class="title ">
+                                <p class="m-0">Chassis</p>
+                                <button [matMenuTriggerFor]="menu" mat-icon-button class="action-btn">
+                                    <i class="ki-duotone ki-dots-horizontal"> <span class="path1"></span> <span
+                                            class="path2"></span> <span class="path3"></span></i>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before" class="list-pb-0">
+                                    <button mat-menu-item>Item 1</button>
+                                    <button mat-menu-item>Item 2</button>
+                                </mat-menu>
+                            </div>
+                            <h1>24</h1>
+                            <p class="mention">Assigned Chassis</p>
+                            <p class="status">Idle Chassis: <span>12</span></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card green">
+                            <div class="title ">
+                                <p class="m-0">Carriers</p>
+                                <button [matMenuTriggerFor]="menu" mat-icon-button class="action-btn">
+                                    <i class="ki-duotone ki-dots-horizontal"> <span class="path1"></span> <span
+                                            class="path2"></span> <span class="path3"></span></i>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before" class="list-pb-0">
+                                    <button mat-menu-item>Item 1</button>
+                                    <button mat-menu-item>Item 2</button>
+                                </mat-menu>
+                            </div>
+                            <h1>38</h1>
+                            <p class="mention">Assigned Carrier</p>
+                            <p class="status">Idle Carrier: <span>17</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <div class="card charts">
+                            <div class="title ">
+                                <p class="m-0">Task Distribution</p>
+                                <button [matMenuTriggerFor]="menu" mat-icon-button class="action-btn">
+                                    <i class="ki-duotone ki-dots-horizontal"> <span class="path1"></span> <span
+                                            class="path2"></span> <span class="path3"></span></i>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before" class="list-pb-0">
+                                    <button mat-menu-item>Item 1</button>
+                                    <button mat-menu-item>Item 2</button>
+                                </mat-menu>
+                            </div>
+                            <div class="chart-wrap">
+                                <!-- <canvas baseChart class="chart" [data]="polarAreaChartData" [type]="polarAreaChartType"
+                                    [legend]="false">
+                                </canvas> -->
+                                <!-- <canvas
+  baseChart
+  class="chart"
+  [data]="barChartData"
+  [options]="barChartOptions"
+
+  [type]="barChartType"
+  (chartHover)="chartHovered($event)"
+  (chartClick)="chartClicked($event)"
+>
+</canvas> -->
+                            </div>
+                            <div class="chart-bottom">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h1>453</h1>
+                                        <p>New Tasks</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h1>674</h1>
+                                        <p>Completed Tasks</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card boxed-overview">
+                            <div class="title ">
+                                <p class="m-0">Overview</p>
+                                <button [matMenuTriggerFor]="menu" mat-icon-button class="action-btn">
+                                    <i class="ki-duotone ki-dots-horizontal"> <span class="path1"></span> <span
+                                            class="path2"></span> <span class="path3"></span></i>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before" class="list-pb-0">
+                                    <button mat-menu-item>Item 1</button>
+                                    <button mat-menu-item>Item 2</button>
+                                </mat-menu>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="box">
+                                        <h3>214</h3>
+                                        <p>New Issues</p>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-6">
+                                            <div class="box grey">
+                                                <div>
+                                                    <h4>3</h4>
+                                                <p>Fixed</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="box grey">
+                                                <div>
+                                                    <h4>4</h4>
+                                                <p>Won't Fix</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box green">
+                                        <h3>75</h3>
+                                        <p>Closed</p>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-6">
+                                            <div class="box grey">
+                                                <div>
+                                                    <h4>8</h4>
+                                                <p>Re-opened</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="box grey">
+                                                <div>
+                                                    <h4>6</h4>
+                                                <p>Needs Triage</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Budget"> Budget </mat-tab>
+            <mat-tab label="Team"> Team </mat-tab>
+        </mat-tab-group>
+    </div>
+
+</div>

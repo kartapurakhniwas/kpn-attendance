@@ -1,0 +1,87 @@
+.blackout {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: #00000054;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+.slide {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    background: white;
+    z-index: 10;
+    // padding: 20px;
+    .slide-header {
+        @include d-flex-all;
+        font-weight: 700;
+        border-bottom: 1px solid $light_grey_color;
+        margin-bottom: 20px;
+        padding: 8px 20px;
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: $secondary_color;
+        }
+    }
+    .slide-body {
+        position: relative;
+        height: calc(100vh - ($sidebar-footer-height + 100px));
+        position: relative;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0 20px;
+        .heading {
+            font-size: 13px;
+            color: $light-text;
+            margin-bottom: 13px;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+        .mat-mdc-radio-button {
+            .mdc-form-field {
+                margin-right: 13px;
+                label.mdc-label {
+                    margin-bottom: 0 !important;
+                    padding-left: 0 !important;
+                }
+            }
+        }
+    }
+    .slide-footer {
+        @include d-flex-center;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: calc(100%);
+        column-gap: 20px;
+        background: #f8fafc;
+        border-top: 1px solid #f0f3f7;
+        padding: 10px 20px;
+        height: $sidebar-footer-height;
+        justify-content: flex-end;
+        button {
+            // flex-grow: 1;
+            min-width: 130px;
+        }
+        & > div {
+            display: flex;
+            width: 100%;
+            button {
+                flex-grow: 1;
+            }
+        }
+    }
+}
+.order-detail-sub-head {
+    .heading{
+        font-size: 13px;
+        color: #687d96;
+        margin-bottom: 13px;
+        margin-top: 5px;
+        font-weight: 700;
+    }
+}

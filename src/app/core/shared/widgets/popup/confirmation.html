@@ -1,0 +1,14 @@
+<div class="popups confirmation">
+  <h1 mat-dialog-title>{{Title}}</h1>
+  <div mat-dialog-content>
+    <p [innerHTML]="Desc"></p>
+  </div>
+  <div mat-dialog-actions class="pe-4">
+    <!-- <button mat-button (click)="onNoClick()" class="common_btn_4 mat-raised-button mr-2">Cancel</button>
+    <button mat-raised-button (click)="btnOK()" class="common_btn_4 mat-raised-button mr-2" ></button> -->
+
+    <button (click)="onNoClick()" mat-flat-button color="secondary" class="secondary"> Cancel</button>
+
+    <button (click)="btnOK()" mat-flat-button color="primary" class="primary" cdkFocusInitial>  {{Operation}}</button>
+  </div>
+</div>

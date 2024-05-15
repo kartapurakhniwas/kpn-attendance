@@ -1,0 +1,19 @@
+<div class="popups confirmation">
+  <h1 mat-dialog-title>{{data.Title}}</h1>
+  <div mat-dialog-content>
+
+    <div class="input-wrap">
+      <label class="form-label" [innerHTML]="data.InputTitle"></label>
+      <mat-form-field appearance="outline">
+        <input matInput [placeholder]="data.InputTitle" [(ngModel)]="inputName">
+      </mat-form-field>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="pe-4">
+    
+    <button (click)="onNoClick()" mat-flat-button color="secondary" class="secondary"> Cancel</button>
+
+    <button (click)="btnOK()" mat-flat-button color="primary" class="primary" cdkFocusInitial> OK</button>
+  </div>
+</div>

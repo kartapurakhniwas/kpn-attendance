@@ -1,0 +1,41 @@
+<div class="popups confirmation">
+  <h1 mat-dialog-title>{{data.Title}}</h1>
+  <div mat-dialog-content>
+
+    <div class="input-wrap">
+      <label class="form-label" [innerHTML]="data.InputTitle"></label>
+
+        <!-- <select [ngModel]="Doctype">
+          <option value="1">Centerm - Import & Export (csv) </option>
+          <option value="2"> Centerm - Import Only (csv)</option>
+          <option value="3">Deltaport and Vanterm (excel) </option>
+        </select> -->
+        @if(data.type) {
+          <mat-form-field appearance="outline" >
+            <mat-select placeholder="Select Doc Type" [ngModel]="Doctype">
+                <mat-option value="1">Centerm - Import & Export (csv)</mat-option>
+                <mat-option value="2">Centerm - Import Only (csv)</mat-option>
+                <mat-option value="3">Deltaport and Vanterm (excel)</mat-option>
+              </mat-select>
+        </mat-form-field>
+        }
+            
+    <div class="join-btn">
+        <input
+        type="file"
+        class="choose-file w-100"
+       
+        (change)="fileUploaded($event)"
+        multiple
+      />
+    </div>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="pe-4">
+    
+    <button (click)="onNoClick()" mat-flat-button color="secondary" class="secondary"> Cancel</button>
+
+    <button (click)="btnOK()" mat-flat-button color="primary" class="primary" cdkFocusInitial> OK</button>
+  </div>
+</div>

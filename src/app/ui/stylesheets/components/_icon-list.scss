@@ -1,0 +1,22 @@
+.icon-list {
+    li {
+        display: flex;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        i {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+        .mat-icon {
+            @include d-flex-all-center;
+            background: rgba($primary_color, .2);
+            color: $primary_color;
+            border-radius: 50%;
+            font-size: 16px;
+            margin-right: 8px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

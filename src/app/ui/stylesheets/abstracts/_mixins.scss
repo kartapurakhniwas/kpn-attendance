@@ -1,0 +1,52 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within {
+      @content;
+    }
+  }
+}
+
+@mixin transition {
+  transition: all 0.2s ease-in;
+}
+
+@mixin box-shadow {
+  box-shadow: 18px 4px 35px #00000005;
+}
+
+@mixin d-flex-all {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin d-flex-all-center {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin d-flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin d-flex-center {
+  display: flex;
+  align-items: center;
+}

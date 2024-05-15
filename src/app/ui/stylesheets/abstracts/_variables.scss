@@ -1,0 +1,84 @@
+
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// Global
+$primary_color: #564de6;
+$secondary_color: #0f172a;
+$light_grey_color: #8e9db1;
+$danger_color: #FF4A55;
+$pink: #a64757;
+$green: #2d7548;
+$blue: #5ECFFF;
+$red: #ff4a55;
+$black: #2a3547;
+$table-td_color:#010102;
+$input-border:#bfccda;
+$sc-primary:#65c466;
+$sc-dark-primary:#57b459;
+$dark-text:#333;
+$light-text:#687d96;
+$ultra-light-text:#A3B3C6;
+$light-border:#dbe2eb;
+
+
+// Sidebar
+$sidebar_width: 235px;
+$sidebar_width_collapsed: 63px;
+$sidebar-footer-height: 70px;
+
+// Content
+$grey_background: #f9f9f9;
+$grey_background1: #f5f5f5;
+$header_height: 60px;
+
+$header_height_active: 176px;
+$content_padding: calc(3.3vw);
+$ag-table-col-height: 35px;
+
+// Text Styling
+$text-font-stack: 'Inter Tight';
+$text-color: #202020;
+$table-th-color: #5e738b;
+
+// Theme variables
+body.grey-blue {
+    --primary_color: #000f08;
+    --secondary_color: #1c3738;
+}
+body.brown {
+    --primary_color: #260C1A;
+    --secondary_color: #5F4842;
+}
+body.grey-green {
+    --primary_color: #071E22;
+    --secondary_color: #679289;
+}
+body.purple-green {
+    --primary_color: #49475B;
+    --secondary_color: #799496;
+}
+body.black-purple {
+    --primary_color: #14080E;
+    --secondary_color: #49475B;
+}
+body.pink {
+    --primary_color: #420039;
+    --secondary_color: #932F6D;
+}
+
+// color classes 
+
+.secondary_color {
+    color: $secondary_color !important;
+}
+.primary_color {
+    color: $primary_color !important;
+}
+.danger_color {
+    color: $danger_color !important;
+}
+.color-green {
+    color: green;
+}

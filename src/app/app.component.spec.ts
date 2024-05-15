@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'kpn-attendance' title`, () => {
+  it(`should have the 'smart-track-fe' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('kpn-attendance');
+    expect(app.title).toEqual('smart-track-fe');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, kpn-attendance');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, smart-track-fe');
   });
 });

@@ -1,0 +1,63 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 8px !important;
+}
+::-webkit-scrollbar-horizontal {
+  height: 6px !important;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background: lighten(#7E8299, 20%);
+  border-radius: 5px;
+  width: 6px !important;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: var(--light-blue);
+}
+
+.mat-tab-label {
+  &.mat-tab-label-active {
+    opacity: 1 !important;
+  }
+  .mat-tab-label-content {
+    color: var(--table-text-color);
+  }
+}
+
+select:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

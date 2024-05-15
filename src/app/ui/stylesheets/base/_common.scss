@@ -1,0 +1,222 @@
+.border-wrap {
+    border-top: 1px solid #E2E8F0;
+    padding: 15px;
+    border-radius: 5px;
+    h3.heading {
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 13px;
+    }
+}
+
+hr.divider {
+    border: 1px dashed lighten(#94A3B8, 14);
+    margin-top: 12px;
+    margin-bottom: 23px;
+}
+
+.white-card {
+    background-color: #ffffff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 15px 10px 30px;
+    min-height: calc(100vh - 29px);
+    border-left: 1px solid $light_grey_color;
+    p.p-title {
+        color: $primary_color;
+        margin-bottom: .5rem;
+        font-size: 15px;
+        font-weight: 600;
+    }
+}
+
+.table-left-wrap {
+    position: relative;
+    .move-btn {
+        position: absolute;
+        right: -21px;
+        top: 37px;
+        background-color: $primary_color;
+        z-index: 3;
+    }
+}
+
+.files_list {
+    margin-top: 17px;
+    li {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        width: 100%;
+        margin-bottom: 10px;
+        padding-bottom: 3px;
+        padding-right: 2px;
+        &.heading {
+            margin-bottom: 2px;
+            p {
+                color: $primary_color;
+                font-size: 14px;
+                font-weight: 700;
+            }
+        }
+    }
+}
+.row.custom-row {
+    display: block;
+}
+.input-wrap.flex-input-bx {
+    display: flex;
+    /* place-content: center; */
+}
+.input-wrap.flex-input-bx label {
+    width: 300px;
+    align-items: center;
+}
+.customer-label-w .flex-input-bx label {
+    width: 100px;
+}
+.text-end {
+    text-align: right;
+}
+.hr-light {
+    background-color: #dbe2eb;
+}
+
+.hr-light {
+    height: 1px;
+    margin: 15px 0;
+    position: relative;
+    width: 100%;
+}
+label.mdc-label {
+    color: #172a41;
+    margin-bottom: 5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-size: 11px;
+}
+.flex-custom {
+    display: flex;
+    place-content: center;
+}
+.mat-mdc-form-field-flex {
+    height: 42px;
+}
+.slide-footer.custom-gap {
+    column-gap: 146px !important;
+}
+button.default-width {
+    margin-right: 14px;
+    
+}
+.ml-20 {
+    margin-left: 20px !important;
+}
+.mt-17 {
+    margin-top: 17px;
+
+}
+.mr-10 {
+    margin-right: 10px;
+
+}
+.mr-30 {
+    margin-right: 30px;
+
+}
+.custom-with-max {
+    max-width: 168px !important;
+}
+input.main-search::placeholder {
+    font-family: "Inter Tight" !important;
+    color: #879aaf;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+}
+.material-icons {
+    font-size: 20px;
+}
+.add-link {
+    box-shadow: 0 1px 3px rgba(20,28,52,.2);
+    color: #fff;
+    padding: 2px 8px;
+    margin: 0 0px 0px 6px;
+    border-radius: 3px;
+    background: #22C55E;
+}
+.badge-gray-300 {
+    background: #a3b3c6;
+    color: #fff;
+}
+
+.badge-sm {
+    padding: 0 2px;
+}
+.custom-badge-bx {
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 15px;
+    padding: 3px 5px;
+    text-align: center;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    vertical-align: initial;
+    white-space: nowrap;
+}
+.rdg-truncate {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+}
+.finish-btn {
+    justify-content: center;
+    background: #22c55e !important;
+    color: #fff !important;
+    box-shadow: 0 1px 3px rgba(20, 28, 52, 0.2);
+}
+
+.start-point {
+    position: absolute;
+    top: -19px;
+    left: 3px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #687d96;
+}
+.end-point {
+    position: absolute;
+    left: 9px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #687d96;
+}
+.check-bx-cstm {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    label, span {
+        font-size: 12px;
+        color: #172a41;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+    }
+    & span {
+        color: #29b6f6;
+        font-weight: 600;
+    }
+}
+
+.c-button-bg{
+    background-color: #22c55e !important;
+}
+// .mdc-radio__background {
+//     width: 14px;
+//     height: 14px;
+// }
+// .mat-mdc-text-field-wrapper {
+//     height: 42px !important;
+//     flex: auto;
+// }

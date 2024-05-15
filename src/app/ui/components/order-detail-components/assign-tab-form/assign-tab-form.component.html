@@ -1,0 +1,218 @@
+<div class="row">
+    <div class="col-6">
+      <h3 class="heading common-h3">Heading One</h3>
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> Current Status </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              formControlName="statusId"
+              placeholder="Current Status"
+            >
+              @for(status of containerStatusList; track status.id) {
+              <mat-option [value]="status.id">{{
+                status.statusText
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="ContainerLoad"
+        >
+          <label class="form-label"> Assign Load Type </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              formControlName="containerLoadId"
+              placeholder="Assign Load Type"
+            >
+              @for(status of containerLoadList; track
+              status.containerLoadStatusId) {
+              <mat-option [value]="status.containerLoadStatusId">{{
+                status.loadStatus
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      
+    </div>
+    <!-- ============================ -->
+    <div class="col-1"></div>
+    <div class="col-5">
+      <h3 class="heading common-h3">Heading Two</h3>
+      <!-- <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> PO Number </label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Select PO Number" formControlName="spotNo"/>
+          </mat-form-field>
+        </div>
+      </div> -->
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> Type </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              formControlName="statusId"
+              placeholder="Type"
+            >
+              @for(status of containerTypeList; track
+              status.containerTypeId) {
+              <mat-option [value]="status.containerTypeId">{{
+                status.type
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> Container No. </label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              formControlName="containerNo"
+              placeholder="Container No."
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <div class="col-12">
+            <div class="input-wrap flex-input-bx" [formGroup]="AssignmentForm">
+              <label class="form-label">
+                Size
+              </label>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Select Size" formControlName="containerNo">
+              </mat-form-field>
+            </div>
+          </div> -->
+    </div>
+  </div>
+  <div class="hr-light"></div>
+  <div class="row">
+    <h3 class="heading common-h3">Heading Three</h3>
+    <div class="col-6">
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> Lane (Spot) </label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="Lane (Spot)"
+              formControlName="spotLane"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <div class="col-12">
+            <div class="input-wrap flex-input-bx" [formGroup]="AssignmentForm">
+              <label class="form-label">
+                Driver Phone
+              </label>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Enter Driver Phone" formControlName="spotLane">
+              </mat-form-field>
+            </div>
+          </div> -->
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> Gross Weight </label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="Enter"
+              formControlName="grossWeight"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <!-- <div class="col-12">
+            <div class="input-wrap flex-input-bx" [formGroup]="AssignmentForm">
+              <label class="form-label">
+                Condition
+              </label>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Select">
+              </mat-form-field>
+            </div>
+          </div> -->
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> Seal No. </label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="Enter"
+              formControlName="sealNo"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-12">
+        <div
+          class="input-wrap flex-input-bx"
+          [formGroup]="AssignmentForm"
+        >
+          <label class="form-label"> Unit </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              formControlName="weightUnitId"
+              placeholder="Unit"
+            >
+              @for(status of unitList; track status.unitId) {
+              <mat-option [value]="status.unitId">{{
+                status.name
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: right">
+      <button
+        (click)="assignFormSave()"
+        mat-flat-button
+        color="primary"
+        class="primary"
+      >
+        Save
+        <!-- @if(this.gl.selectedOrder) {
+              Update
+            } @else {
+              Save
+            } -->
+      </button>
+    </div>
+  </div>

@@ -1,0 +1,171 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+button {
+    &.primary {
+        background-color: $sc-primary !important;
+        .mdc-button__label {
+            color: white;
+        }
+    }
+    &.secondary {
+        background-color: $secondary_color !important;
+        .mdc-button__label {
+            color: white;
+        }
+    }
+    &.danger {
+        background-color: $danger_color !important;
+        .mdc-button__label {
+            color: white;
+        }
+    }
+    &.round_btn {
+        padding: 22px 50px;
+        margin-top: 8px;
+        border-radius: 15px;
+    }
+}
+
+.badge-btn {
+    position: relative;
+}
+
+.count-badge {
+    @include d-flex-all-center;
+    font-size: 11px;
+    font-weight: bold;
+    background: $primary_color;
+    color: #fff;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    outline: 3px solid #fff;
+    font-family: "Inter Tight" !important;
+    &.red {
+        background-color: $pink;
+    }
+    &.green {
+        background-color: $green;
+    }
+    &.black {
+        background-color: $black;
+    }
+}
+
+.text-badge {
+    display: inline-block;
+    font-weight: 500;
+    background: #0265a1;
+    border-radius: 7px;
+    color: white;
+    font-size: 10px;
+    line-height: normal;
+    padding: 2px 7px !important;
+    margin-top: -2px;
+    letter-spacing: 0.2px;
+    border-radius: 4px;
+    &.red {
+        color: $pink;
+        background-color: #ffeeee;
+        border: 1px solid #fac0c0;
+    }
+    &.green {
+        color: $green;
+        background-color: #f1fff8;
+        border: 1px solid #bff7da;
+    }
+}
+
+.online-status {
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    background-color: $primary_color;
+    border-radius: 50%;
+    margin-top: 9px;
+    &.green {
+        background-color: #22C55E;
+    }
+    &.red {
+        background-color: $red;
+    }
+}
+
+.action_icon_btn {
+    height: 24px !important;
+    width: 24px;
+    @include d-flex-all-center;
+    border-radius: 2px;
+    font-size: 18px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    // color: #fff;
+    // background: $sc-primary !important;
+    // border-color: $sc-primary;
+    &.green {
+        color: #65c466;
+        background: #e7ffe7 !important;
+        border-color: #b2f9b3;
+    }
+    &.red {
+        color: #ff3232;
+        border-color: #ff3232;
+        background: #fae4e4;
+    }
+    &.orange {
+        color:#FF7F50;
+        border-color: #FF7F50;
+        background: #fff8e6;
+    }
+}
+
+.arrow_btn {
+    .mat-expansion-indicator {
+        border: 1px solid $primary_color;
+        color: $primary_color;
+        background-color: rgba($primary_color, 0.2);
+        width: 28px;
+        height: 28px;
+        text-align: center;
+        line-height: 23px;
+        border-radius: 6px;
+    }
+}
+
+.mdc-button {
+    padding: 0 30px !important;
+    border-radius: 5px !important;
+    font-size: 13px;
+    .mdc-button__label {
+        @include d-flex-all-center;
+        letter-spacing: normal;
+        align-items: center;
+        display: flex;
+        i {
+            font-size: 20px;
+            margin-right: 7px;
+        }
+    }
+    &.mat-mdc-button-base {
+        border: 1px solid $light-border !important;
+        padding: 0px 8px !important;
+        font-size: 12px;
+        height: 30px;
+        font-family: "Inter Tight" !important;
+        margin-right: 7px;
+        border-radius: 3px !important;
+        color: #172a41 !important;
+        // color: $light_grey_color !important;
+    }
+    &.mat-primary {
+        background: $sc-primary !important;
+        border-color: $sc-primary!important;
+        color: #ffffff !important;
+        &:hover {
+            background: darken($sc-dark-primary, 8) !important;
+            border-color: $sc-dark-primary !important;
+        }
+    }
+}

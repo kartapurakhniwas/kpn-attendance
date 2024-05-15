@@ -1,0 +1,64 @@
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Driver</th>
+          <th>Truck</th>
+          <th>Chessis</th>
+      
+          <th>From Location</th>
+          <th>To Location</th>
+          <th>Lat/Long</th>
+          <th>Load Type</th>
+          <th>Date Time</th>
+          <th>Status</th>
+          <!-- <th>Remarks</th> -->
+       <!--   <th>Document</th>
+          <th>Job Acc</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of historyLst; track item.jobHistoryId; ) {
+
+        <tr>
+          <td>
+            @if($index == 0){
+              <i class="ki-duotone ki-arrow-circle-left me-2" (click)="undoHistory()" matTitle="It will undo all autocompleted steps">
+                <span class="path1"></span>
+                <span class="path2"></span>
+               </i>
+            }
+            @if(item.isAutocompleted){
+              <span class="text-badge blue" matTitle="Is Auto Completed!">A</span>
+            }
+            <!-- <button [matMenuTriggerFor]="menu" class="custom-mat-btn inner-table-menu-btn" style="border: none;
+          background: transparent;
+          margin-top: 7px;
+          cursor: pointer;">
+              <mat-icon>expand_more</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="after" class="list-pb-0">
+              <button mat-menu-item>Link</button>
+              <button mat-menu-item>Link</button>
+              <button mat-menu-item>Link</button>
+            </mat-menu> -->
+          </td>
+          <td>{{item.driverName}}</td>
+          <td>{{item.truckName}}</td>
+          <td>{{item.trailerName}}</td>
+        
+          <td>{{item.fromLocationName}}</td>
+          <td>{{item.toLocationName}}</td>
+          <td>{{item.latitude}} {{item.longitude}}</td>
+          <td>{{item.loadStatus}}</td>
+          <td>{{item.utcModifiedAt | date}}</td>
+          <td>{{item.statusName}}</td>
+        <!--  <td>---</td>
+          <td>Complete</td>-->
+        </tr>
+      }
+        
+      </tbody>
+    </table>
+  </div>

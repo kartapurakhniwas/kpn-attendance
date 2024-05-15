@@ -1,0 +1,493 @@
+<mat-accordion>
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Pickup Location
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+        <mat-panel-description>
+          <ul class="icon-list">
+            <li>
+              <!-- <mat-icon>location_on</mat-icon> -->
+              <i class="ki-duotone ki-geolocation mat-icon">
+                <span class="path1"></span>
+                <span class="path2"></span>
+                </i>
+              {{pickupLocationName?.addressMappings[0].address.streetLine1}}
+              {{pickupLocationName?.addressMappings[0].address.cityName}}
+              {{pickupLocationName?.addressMappings[0].address.postalCode}}
+              {{pickupLocationName?.addressMappings[0].address.stateName}}
+            </li>
+          </ul>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="row border-wrap" [formGroup]="exportLocationForm">
+        <div class="col-12">
+          <div class="">
+            <div class="row">
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Loaction
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <mat-select (selectionChange)="pickuplocationChange($event)"
+                      formControlName="pickUpLocationId">
+                      @for(item of pickupLocations; track item.id) {
+                      <mat-option [value]="item.id">{{item.name}}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <ul class="icon-list">
+                  <li>
+                    <!-- <mat-icon>location_on</mat-icon> -->
+                    <i class="ki-duotone ki-geolocation mat-icon">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                      </i>
+                    {{pickupLocationName?.addressMappings[0].address.streetLine1}}
+                    {{pickupLocationName?.addressMappings[0].address.cityName}}
+                    {{pickupLocationName?.addressMappings[0].address.postalCode}}
+                    {{pickupLocationName?.addressMappings[0].address.stateName}}
+                    <i class="ki-duotone ki-trash mat-icon ms-2">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                    <span class="path3"></span>
+                    <span class="path4"></span>
+                    <span class="path5"></span>
+                    </i>
+                    <!-- <mat-icon>delete</mat-icon> -->
+                  </li>
+                </ul>
+              </div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Pickup ETA Date
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="ETADate" placeholder="Select Date"
+                      formControlName="pickUpFromDateTime">
+                    <mat-datepicker-toggle matIconSuffix [for]="ETADate"></mat-datepicker-toggle>
+                    <mat-datepicker #ETADate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Pickup LFD Date
+                  </label>
+                  <mat-form-field appearance="outline">
+
+                    <input matInput [matDatepicker]="LFDDate" placeholder="Select Date"
+                      formControlName="pickUpToDateTime">
+                    <mat-datepicker-toggle matIconSuffix [for]="LFDDate"></mat-datepicker-toggle>
+                    <mat-datepicker #LFDDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- <hr class="divider"> -->
+            <div class="hr-light"></div>
+            <div class="row">
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Reservation No.</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Reservation No."
+                      formControlName="pickUpReservationNo">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Truck VISIT APPT/TVA/VISIT ID</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter VISIT APPT/TVA/VISIT ID"
+                      formControlName="pickUpTVAId">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Res Date</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="RESDate" placeholder="Select Date"
+                      formControlName="pickUpReservationDateTime">
+                    <mat-datepicker-toggle matIconSuffix [for]="RESDate"></mat-datepicker-toggle>
+                    <mat-datepicker #RESDate></mat-datepicker>
+
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Start Time</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Select Time" type="time"
+                      formControlName="pickUpReservationFromDateTime">
+                  </mat-form-field>
+                </div>
+              </div>
+                  <div class="col-5">
+                    <div class="input-wrap flex-input-bx">
+                      <label class="form-label">End Time</label>
+                      <mat-form-field appearance="outline">
+                        <input matInput placeholder="Select Time" type="time"
+                          formControlName="pickUpReservationToDateTime">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-5">
+                    <div class="input-wrap pull pull-right ">
+                      <button mat-raised-button mat-accent color="primary"
+                        (click)="SavePickUpLocation()">Save</button>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Unloading Locations
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+        <!-- <mat-panel-description>
+          <ul class="icon-list">
+            <li>
+              <mat-icon>location_on</mat-icon>
+              {{unloadingLocationName?.addressMappings[0].address.streetLine1}}
+              {{unloadingLocationName?.addressMappings[0].address.cityName}}
+              {{unloadingLocationName?.addressMappings[0].address.postalCode}}
+              {{unloadingLocationName?.addressMappings[0].address.stateName}}
+            </li>
+          </ul>
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+      <div class="row border-wrap">
+        <div class="col-12">
+          <div class="">
+            <div class="row" [formGroup]="unloadlocationForm">
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Loaction
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <mat-select (selectionChange)="umloadinglocationChange($event)"
+                      formControlName="locationId">
+                      @for(item of unloadingLocations; track item.id) {
+                      <mat-option [value]="item.id">{{item.name}}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <ul class="icon-list">
+                  <li>
+                    <!-- <mat-icon>location_on</mat-icon> -->
+                    <i class="ki-duotone ki-geolocation mat-icon">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                      </i>
+                    {{unloadingLocationName?.addressMappings[0].address.streetLine1}}
+                    {{unloadingLocationName?.addressMappings[0].address.cityName}}
+                    {{unloadingLocationName?.addressMappings[0].address.postalCode}}
+                    {{unloadingLocationName?.addressMappings[0].address.stateName}}
+                    <!-- <mat-icon>delete</mat-icon> -->
+                    <i class="ki-duotone ki-trash mat-icon ms-2">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                      <span class="path3"></span>
+                      <span class="path4"></span>
+                      <span class="path5"></span>
+                      </i>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Unloading Date
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="UnloadingDate" placeholder="Select Date"
+                      formControlName="loadingUnLoadingDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="UnloadingDate"></mat-datepicker-toggle>
+                    <mat-datepicker #UnloadingDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    PO Number
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter PO Number" formControlName="purchaseOrderNumber">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Remarks
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Remarks" formControlName="remarks">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    <section class="example-section">
+                      <mat-checkbox class="example-margin" formControlName="isInspectionRequired">Inspection</mat-checkbox>
+                    </section>
+                  </label>
+                </div>
+              </div>
+              <div class="col-11">
+                <div class="input-wrap flex-input-bx pull-right ">
+                  <button mat-raised-button mat-accent color="primary" *ngIf="!isunloadingEdit" (click)="SaveunloadingUpLocation()">Save</button>
+                  <button mat-raised-button mat-accent color="primary" *ngIf="isunloadingEdit" (click)="UpdateunloadingUpLocation()">Update</button>                  
+                </div>
+              </div>
+            </div>
+            <div class="hr-light"></div>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Sr No</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>PO Number</th>
+                        <th>Inspection</th>
+                        <th>Up/Down</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for(item of loadingUnloadingLocations; track item.containerLoadingUnLoadingLocationId; ) {
+                        <tr>
+                          <td>{{$index +1}}</td>
+                          <td>{{item.locationName}}</td>
+                          <td>{{item.loadingUnLoadingDate | date: 'MM/dd/yyyy'}} </td>
+                          <td>{{item.purchaseOrderNumber}}</td>
+                          <td>{{item.isInspectionRequired}}</td>
+                          <td>Loaded</td>
+                          <td>
+                            <button [matMenuTriggerFor]="menu" class="custom-mat-btn inner-table-menu-btn"
+                              style="border: none;
+                          background: transparent;
+                          margin-top: 7px;
+                          cursor: pointer;">
+                              <!-- <mat-icon>expand_more</mat-icon> -->
+                              <i class="ki-duotone ki-dots-vertical mat-icon">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                </i>
+                            </button>
+                            <mat-menu #menu="matMenu" xPosition="after" class="list-pb-0">
+                              <button mat-menu-item (click)="editunloadingLocation(item)">Edit</button>
+                              <button mat-menu-item (click)="deleteunloadingLocation(item)">Delete</button>
+                           
+                            </mat-menu>
+                          </td>
+                        </tr>
+                      }
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Empty Return Location
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+        <mat-panel-description>
+          <ul class="icon-list">
+            <li>
+              <!-- <mat-icon>location_on</mat-icon> -->
+              <i class="ki-duotone ki-geolocation mat-icon">
+                <span class="path1"></span>
+                <span class="path2"></span>
+                </i>
+              {{emptyLocationName?.addressMappings[0].address.streetLine1}}
+                    {{emptyLocationName?.addressMappings[0].address.cityName}}
+                    {{emptyLocationName?.addressMappings[0].address.postalCode}}
+                    {{emptyLocationName?.addressMappings[0].address.stateName}}
+            </li>
+          </ul>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="row border-wrap" [formGroup]="dropLocationForm">
+        <div class="col-12">
+          <div class="">
+            <div class="row">
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Loaction
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <mat-select (selectionChange)="droplocationChange($event)"
+                      formControlName="dropLocationId">
+                      @for(item of emptyLocations; track item.id) {
+                      <mat-option [value]="item.id">{{item.name}}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <ul class="icon-list">
+                  <li>
+                    <!-- <mat-icon>location_on</mat-icon> -->
+                    <i class="ki-duotone ki-geolocation mat-icon">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                      </i>
+                    {{emptyLocationName?.addressMappings[0].address.streetLine1}}
+                    {{emptyLocationName?.addressMappings[0].address.cityName}}
+                    {{emptyLocationName?.addressMappings[0].address.postalCode}}
+                    {{emptyLocationName?.addressMappings[0].address.stateName}}
+                    <i class="ki-duotone ki-trash mat-icon ms-2">
+                      <span class="path1"></span>
+                      <span class="path2"></span>
+                      <span class="path3"></span>
+                      <span class="path4"></span>
+                      <span class="path5"></span>
+                      </i>
+                    <!-- <mat-icon>delete</mat-icon> -->
+                  </li>
+                </ul>
+              </div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Pickup ETA Date
+                  </label>
+                  <mat-form-field appearance="outline">
+
+                    <input matInput [matDatepicker]="EmptyETADate" placeholder="Select Date"
+                      formControlName="dropOffFromDateTime">
+                    <mat-datepicker-toggle matIconSuffix [for]="EmptyETADate"></mat-datepicker-toggle>
+                    <mat-datepicker #EmptyETADate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">
+                    Pickup LFD Date
+                  </label>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="EmptyLFDDate" placeholder="Select Date"
+                      formControlName="dropOffToDateTime">
+                    <mat-datepicker-toggle matIconSuffix [for]="EmptyLFDDate"></mat-datepicker-toggle>
+                    <mat-datepicker #EmptyLFDDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="hr"></div>
+            <div class="row">
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Reservation No.</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Reservation No."
+                      formControlName="dropOffReservationNo">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Truck VISIT APPT/TVA/VISIT ID</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter VISIT APPT/TVA/VISIT ID"
+                      formControlName="dropOffTVAId">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Res Date</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput [matDatepicker]="EmptyResDate" placeholder="Select Date"
+                      formControlName="dropOffReservationDateTime">
+                    <mat-datepicker-toggle matIconSuffix [for]="EmptyResDate"></mat-datepicker-toggle>
+                    <mat-datepicker #EmptyResDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-5">
+                <div class="input-wrap flex-input-bx">
+                  <label class="form-label">Start Time</label>
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Select Time" type="time"
+                      formControlName="dropOffReservationFromDateTime">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-5">
+                    <div class="input-wrap flex-input-bx">
+                      <label class="form-label">End Time</label>
+                      <mat-form-field appearance="outline">
+                        <input matInput placeholder="Select Time" type="time"
+                          formControlName="dropOffReservationToDateTime">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-5">
+                    <div class="input-wrap pull-right mt-4">
+                      <button mat-raised-button mat-accent color="primary"
+                        (click)="SaveEmptyUpLocation()">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  </mat-expansion-panel>
+</mat-accordion>

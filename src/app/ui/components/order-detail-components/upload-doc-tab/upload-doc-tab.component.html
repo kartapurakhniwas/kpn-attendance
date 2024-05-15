@@ -1,0 +1,66 @@
+<div class="d-flex align-items-center my-3" [formGroup]="Form">
+  <div class="input-wrap me-3">
+    <div class="join-btn d-flex align-items-center">
+      <div class="input-wrap me-3">
+        <label class="form-label">Select File Type</label>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="documentTypeId">
+            @for(type of docTypeList; track type.documentTypeId) {
+            <mat-option [value]="type.documentTypeId">{{
+              type.documentTypeName
+            }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <input
+        type="file"
+        class="choose-file"
+        formControlName="doc"
+        (change)="fileUploaded($event)"
+        multiple
+      />
+      <button mat-flat-button class="primary round_btn ms-3" (click)="save()">
+        Upload
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="hr-light"></div>
+<ul class="files_list">
+  @for(doc of docList | groupby:'documentTypeName'; track doc.key) {
+  <li class="heading">
+    <h3 class="heading common-h3">{{ doc.key }}</h3>
+  </li>
+  @for(ele of doc.value; track ele.containerDocumentId) {
+  <li>
+    <a [href]="url + 'Resources/' + ele.documentPath" target="_blank" class="uploaded_file_chips">
+      <!-- <i class="ki-duotone ki-file mat-icon">
+        <span class="path1"></span>
+        <span class="path2"></span>
+      </i> -->
+      <!-- <div
+        class="doc-badage pdf doc"
+        [class.red]="ele.docExt == 'pdf'"
+        [class.org-jpg]="ele.docExt == 'jpg'"
+      >
+        {{ ele.docExt }}
+      </div> -->
+      <img src="https://media.wired.com/photos/6619a0fc931c44201967adb8/1:1/w_1800,h_1800,c_limit/Google-Docs-Shortcuts-Gear-GettyImages-1465454353.jpg">
+      <div>        
+        <p>{{ ele.documentName }}</p>
+      </div>
+    </a>
+    <i
+        class="ki-duotone ki-minus-circle"
+        (click)="deleteDoc(ele.containerDocumentId)"
+        matTooltip="Delete Document"
+      >
+        <span class="path1"></span>
+        <span class="path2"></span>
+      </i>
+  </li>
+  } }
+</ul>

@@ -1,0 +1,23 @@
+/**
+ * Basic typography style for copy text
+ */
+
+body {
+  color: $text-color;
+  font: normal 100% / 1.4 $text-font-stack !important;
+}
+
+h1,h2,h3,h4,h5,h6,p,a { 
+  font-family: $text-font-stack !important;
+}
+
+.mat-select,
+.mat-expansion-panel-header,
+.mat-option,
+.form-label,
+.mdc-label,
+input.mat-mdc-input-element,
+.mdc-button__label {
+  font-family: $text-font-stack !important;
+  letter-spacing: normal;
+}
