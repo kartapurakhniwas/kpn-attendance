@@ -31,12 +31,12 @@
     </button>
   </div>
   <div class="company-logo">
-    <img src="../../../assets/images/company.png" alt="">
-    <p>Super Sonic transport</p>
-    <small>admin&#64;supersonic.com</small>
+    <img src="../../../assets/images/logo.png" alt="">
+    <p>Gurudwara Karta Purakh Niwas Sahib</p>
+    <small>help&#64;kartapurakhniwas.com</small>
   </div>
   <mat-accordion class="menu">
-    <!-- <mat-accordion class="menu" (mouseover)="mouseOver($event)" (mouseout)="mouseOut($event)"> -->
+    
     <mat-expansion-panel hideToggle routerLink="/dashboard" routerLinkActive="active">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -48,174 +48,18 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
     </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header matTooltip="Orders" matTooltipPosition="right">
-        <mat-panel-title>
-          <i class="ki-duotone ki-tablet-text-down">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-          </i>
-          <span>Orders</span> 
-          <!-- <span class="count-badge">17</span> -->
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <ul class="inner-menu">
-        <li routerLink="/import-orders" routerLinkActive="active" matTooltip="Import Orders" matTooltipPosition="right">
-          <i class="ki-duotone ki-entrance-right">
-            <span class="path1"></span>
-            <span class="path2"></span>
-          </i>
-          <span>Import Orders</span>
-        </li>
-        <li routerLink="/export-orders" routerLinkActive="active" matTooltip="Export Orders" matTooltipPosition="right">
-          <i class="ki-duotone ki-exit-left">
-            <span class="path1"></span>
-            <span class="path2"></span>
-          </i>
-          <span>Export Orders</span>
-        </li>
-        <li routerLink="/import-export-container" routerLinkActive="active" matTooltip="Import Export Container" matTooltipPosition="right">
-          <i class="ki-duotone ki-arrow-zigzag">
-            <span class="path1"></span>
-            <span class="path2"></span>
-          </i>
-          <span>Import Export Container</span>
-        </li>
-        <!-- <li routerLink="/delivered-orders" routerLinkActive="active">Delivered Orders</li> -->
-      </ul>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel hideToggle routerLink="/driver-log" routerLinkActive="active" matTooltip="Driver Log" matTooltipPosition="right">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i class="ki-duotone ki-barcode">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-            <span class="path5"></span>
-            <span class="path6"></span>
-            <span class="path7"></span>
-            <span class="path8"></span>
-          </i>
-          <span>Driver Log</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
-
-    <!-- <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i class="ki-duotone ki-safe-home">
-            <span class="path1"></span>
-            <span class="path2"></span>
-          </i>
-          <span>Company</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel> -->
-
-    <mat-expansion-panel hideToggle routerLink="/locations" routerLinkActive="active" matTooltip="Locations" matTooltipPosition="right">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i class="ki-duotone ki-pointers">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-          </i>
-          <span>Locations</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
     
-    <mat-expansion-panel hideToggle routerLink="/customers" routerLinkActive="active" matTooltip="Customers" matTooltipPosition="right">
+    <mat-expansion-panel hideToggle routerLink="/dashboard" routerLinkActive="active">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <i class="ki-duotone ki-profile-user">
+          <i class="ki-duotone ki-abstract-25">
             <span class="path1"></span>
             <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
           </i>
-          <span>Customers</span> 
-          <!-- <span class="text-badge red">NEW</span> -->
+          <span>Dashboard</span>
         </mat-panel-title>
       </mat-expansion-panel-header>
     </mat-expansion-panel>
-
-    <mat-expansion-panel hideToggle routerLink="/shipping-line" routerLinkActive="active" matTooltip="Shipping Line" matTooltipPosition="right">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i class="ki-duotone ki-delivery-geolocation">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-            <span class="path5"></span>
-          </i>
-          <span>Shipping Line</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
-
-    <!-- <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i class="ki-duotone ki-logistic">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-            <span class="path5"></span>
-            <span class="path6"></span>
-            <span class="path7"></span>
-          </i>
-          <span>Fleet Management</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <ul class="inner-menu">
-        <li>Link</li>
-        <li>Link</li>
-        <li>Link</li>
-        <li>Link</li>
-      </ul>
-    </mat-expansion-panel> -->
-
-    <!-- <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i class="ki-duotone ki-setting-3">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-            <span class="path5"></span>
-          </i>
-          <span>Settings</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel> -->
-
-    <!-- <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i class="ki-duotone ki-dollar">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-          </i>
-          <span>Driver Payroll</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <ul class="inner-menu">
-        <li>Link</li>
-        <li>Link</li>
-        <li>Link</li>
-        <li>Link</li>
-      </ul>
-    </mat-expansion-panel> -->
     
   </mat-accordion>
   <div class="sidebar-footer">
