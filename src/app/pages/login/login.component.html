@@ -1,8 +1,42 @@
-<div class="login-warp">
+<!-- <div class="login-warp">
    <div class="input-wrap">
     <mat-form-field appearance="outline">
         <mat-label>Input</mat-label>
         <input matInput>
       </mat-form-field>
    </div>
-</div>
+</div> -->
+
+
+
+<div class="row flex-center flex">
+   <div class="col-6 form-widget" aria-live="polite">
+     <h1 class="header">Supabase + Angular</h1>
+     <p class="description">Sign in via magic link with your email below</p>
+     <form class="form-widget">
+       <div>
+         <label for="email">Email</label>
+         <input
+           id="email"
+           [(ngModel)]="email"
+           class="inputField"
+           type="email"
+           placeholder="Your email"
+           name="email"
+         />
+         <input
+           id="password"
+           [(ngModel)]="password"
+           class="inputField"
+           type="password"
+           placeholder="Your password"
+           name="password"
+         />
+       </div>
+       <div>
+         <button (click)="onSubmit()">Submit</button>
+         <!-- <button (click)="getData()">Get data</button> -->
+       </div>
+     </form>
+   </div>
+ </div>

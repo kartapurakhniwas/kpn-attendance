@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AuthService } from '../../../core/services/master/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -17,8 +18,9 @@ export class UserComponent {
   sideFlag:boolean = true;
   hovered:boolean = false;
   url: string = '';
+  private auth = inject(AuthService);
 
-  constructor(){}
+  constructor(private router: Router){}
 
   ngOnInit() {
     this.url = window.location.origin;
@@ -40,6 +42,18 @@ export class UserComponent {
     }
     
     console.log(this.sideFlag , this.hovered , "after");
+  }
+
+  async logout() {
+    this.auth.signOut()
+    .then(() => {
+      console.log('logout');
+      
+      this.router.navigateByUrl('/')
+    })
+    .catch((err:any) => {
+      alert('error' + err)
+    })
   }
 }   
  

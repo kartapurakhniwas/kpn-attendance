@@ -8,10 +8,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { LocationsComponent } from './locations.component';
 import { GlobalVariable } from '../../core/services/global.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationComponent } from '../../core/shared/widgets/popup/confirmation';
+import { StudentsComponent } from './students.component';
 
 
 @Component({
@@ -40,7 +40,7 @@ export class TotalValueRendererMenu implements ICellRendererAngularComp {
   value: any;
   storedValue: any;
 
-  constructor(private locations: LocationsComponent,private gl: GlobalVariable, private nav: Router,
+  constructor(private students: StudentsComponent,private gl: GlobalVariable, private nav: Router,
      private _snackBar: MatSnackBar, private dialog: MatDialog
   ) {}
 

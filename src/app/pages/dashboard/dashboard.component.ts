@@ -1,9 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { AuthService } from '../../core/services/master/auth.service';
+import { Router } from '@angular/router';
 
 // import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 
@@ -16,6 +18,11 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  private auth = inject(AuthService);
+
+  constructor(private router: Router) {
+
+  }
    // PolarArea
    public polarAreaChartLabels: string[] = [
     'Download Sales',
@@ -126,5 +133,18 @@ export class DashboardComponent {
     ];
 
     this.chart?.update();
+  }
+
+
+  async logout() {
+    this.auth.signOut()
+    .then(() => {
+      console.log('logout');
+      
+      this.router.navigateByUrl('/login')
+    })
+    .catch((err:any) => {
+      alert('error' + err)
+    })
   }
 }

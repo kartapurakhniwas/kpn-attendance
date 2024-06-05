@@ -11,7 +11,7 @@ export class BaseService {
   public BaseURL: string;
 
   constructor(private http: HttpClient) {
-    this.BaseURL = environment.apiUrl;
+    this.BaseURL = environment.supabaseKey;
   }
 
   open(url = '') {

@@ -18,10 +18,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { GlobalVariable } from '../../core/services/global.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MasterCallService } from '../../core/services/master-services/master-services.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
-import { LocationsService } from '../../core/services/locations/locations.service';
 
 
 
@@ -51,8 +49,8 @@ export class AddLocationsComponent {
   rateZoneList: any;
   locationTypesList: any;
 
-  constructor(public gl: GlobalVariable, private master: MasterCallService, private _snackBar: MatSnackBar,
-    private srv: LocationsService, private nav: Router) {
+  constructor(public gl: GlobalVariable,  private _snackBar: MatSnackBar,
+    private nav: Router) {
 
   
   }
@@ -60,85 +58,36 @@ export class AddLocationsComponent {
   ngOnInit(): void {
     this.refresh();  
     if (this.gl.setRowData) {
-      this.countryChange({value: this.gl.setRowData.addressMappings[0].address.countryId});
+      // this.countryChange({value: this.gl.setRowData.addressMappings[0].address.countryId});
     }
     
   }
 
   refresh() {
-    this.getLocationTypes()
+    
   }
 
-  getLocationTypes() {
-    let self = this;
-      self.master.getLocationTypes().subscribe((m) => {
-        if (m.success) {
-          this.locationTypesList = m.lstModel;
-          this.getRateZone();
-        } 
-      });
-  }
-
-  getRateZone() {
-    let self = this;
-      self.master.getRateZoneMaster().subscribe((m) => {
-        if (m.respStatus) {
-          this.rateZoneList = m.lstModel;
-          this.getCountries();
-        } 
-      });
-  }
-
-  getCountries() {
-    let self = this;
-      self.master.getAllCountries().subscribe((m) => {
-        if (m.respStatus) {
-          this.countries = m.lstModel;
-          this.getIssueStates(1);
-        } 
-      });
-  }
-
-  getIssueStates(event:any) {
-    let self = this;
-    self.master.getStateWithCountry(event).subscribe((m:any) => {
-      if (m.respStatus) {
-        this.states = m.lstModel;
-      }
-    });
-  }
-
-  countryChange(event:any) {
-    let self = this;
-    self.master.getStateWithCountry(event.value).subscribe((m:any) => {
-      if (m.respStatus) {
-        this.states = m.lstModel;
-        if (this.gl.setRowData) {
-          this.stateChange({value: this.gl.setRowData.addressMappings[0].address.stateId});
-        }
-      }
-    });
-  }
+  
 
   stateChange(event:any) {
     let self = this;
-    self.master.getCityWithState(event.value).subscribe((m:any) => {
-      if (m.respStatus) {
-        this.cities = m.lstModel;
-        if (this.gl.setRowData) {
-          this.getById(this.gl.setRowData)
-        }
-      }
-    });
+    // self.master.getCityWithState(event.value).subscribe((m:any) => {
+    //   if (m.respStatus) {
+    //     this.cities = m.lstModel;
+    //     if (this.gl.setRowData) {
+    //       this.getById(this.gl.setRowData)
+    //     }
+    //   }
+    // });
   }
 
   getById(data:any) {
     let self = this;
-    self.srv.getLocationById(data.id).subscribe((m:any) => {
-      if (m.success) {
-        this.setValue(m.model);
-      }
-    });
+    // self.srv.getLocationById(data.id).subscribe((m:any) => {
+    //   if (m.success) {
+    //     this.setValue(m.model);
+    //   }
+    // });
   }
 
   Form = new FormGroup({
@@ -305,23 +254,23 @@ export class AddLocationsComponent {
     if (this.Form.valid) {
       let self = this;
       if(this.gl.setRowData) {
-        self.srv.UpdateLocation(data).subscribe((m:any) => {
-          if (m.success) {
-            this.nav.navigateByUrl('/locations');
-            this._snackBar.open("Updated Successfully!", "Okay", { 'duration': 3000 });
-          } else {
-            this._snackBar.open("Something went wrong!", "Okay", { 'duration': 3000 });
-          }
-        });
+        // self.srv.UpdateLocation(data).subscribe((m:any) => {
+        //   if (m.success) {
+        //     this.nav.navigateByUrl('/locations');
+        //     this._snackBar.open("Updated Successfully!", "Okay", { 'duration': 3000 });
+        //   } else {
+        //     this._snackBar.open("Something went wrong!", "Okay", { 'duration': 3000 });
+        //   }
+        // });
       } else {
-        self.srv.AddLocation(data).subscribe((m:any) => {
-          if (m.success) {
-            this.nav.navigateByUrl('/locations');
-            this._snackBar.open("Added Successfully!", "Okay", { 'duration': 3000 });
-          } else {
-            this._snackBar.open("Something went wrong!", "Okay", { 'duration': 3000 });
-          }
-        });
+        // self.srv.AddLocation(data).subscribe((m:any) => {
+        //   if (m.success) {
+        //     this.nav.navigateByUrl('/locations');
+        //     this._snackBar.open("Added Successfully!", "Okay", { 'duration': 3000 });
+        //   } else {
+        //     this._snackBar.open("Something went wrong!", "Okay", { 'duration': 3000 });
+        //   }
+        // });
       }
     }  else {
       for (let i in this.Form.controls) {

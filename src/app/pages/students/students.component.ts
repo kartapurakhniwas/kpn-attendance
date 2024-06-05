@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
@@ -15,13 +15,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 import { GlobalVariable } from '../../core/services/global.service';
-import { SearchLocations } from "./slides/search.component";
 import { AgColumnFilterComponent } from "../../ui/components/agGridComponents/agColumnFilter.component";
+import { AddStudent } from "./slides/addStudent.component";
+import { StudentsService } from '../../core/services/students/students.service';
 
 @Component({
     selector: 'app-driver',
     standalone: true,
-    templateUrl: './locations.component.html',
+    templateUrl: './students.component.html',
     animations: [
         trigger('openCloseSearch', [
             state('true', style({ right: '0' })),
@@ -37,17 +38,12 @@ import { AgColumnFilterComponent } from "../../ui/components/agGridComponents/ag
     imports: [FormsModule, CommonModule, AgGridModule, MatMenuModule,
         MatButtonModule, MatIconModule, MatCheckboxModule,
         FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatDatepickerModule,
-        MatNativeDateModule, RouterModule, MatButtonModule, SearchLocations, AgColumnFilterComponent,
-        MatCheckboxModule
-      ]
+        MatNativeDateModule, RouterModule, MatButtonModule, AgColumnFilterComponent,
+        MatCheckboxModule, AddStudent]
 })
-export class LocationsComponent {
-  detailFlag: boolean = false;
+export class StudentsComponent {
+  
   addRowFlag: boolean = false;
-  searchFlag: boolean = false;
-  backToYard: boolean = false;
-  doneForDay: boolean = false;
-  slideArray = [this.addRowFlag, this.searchFlag, this.backToYard, this.doneForDay];
   @ViewChild("agGrid") agGrid: AgGridAngular | undefined;
   locationTypesList: any;
   initialColumnDefs: any;
@@ -56,11 +52,7 @@ export class LocationsComponent {
   agParams: any;
   
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
-    this.detailFlag = false;
     this.addRowFlag = false;
-    this.searchFlag = false;
-    this.backToYard = false;
-    this.doneForDay = false;
   }
   columnDefs: any;
   rowSelection: any;
@@ -84,7 +76,7 @@ export class LocationsComponent {
   }
 
   constructor(public gl: GlobalVariable, 
-    // private master: MasterCallService,
+    public srv: StudentsService
   ) {
 
     this.valueGetters = {
@@ -170,33 +162,7 @@ export class LocationsComponent {
   selectedColumns!: any[];
 
   refresh() {
-    this.getLocationTypes()
-  }
-
-  getLocationTypes() {
-    // let self = this;
-    //   self.master.getLocationTypes().subscribe((m) => {
-    //     if (m.success) {
-    //       this.locationTypesList = m.lstModel;
-    //       this.getLocations(this.locationTypeId);
-    //     } 
-    //   });
-  }
-
-  getLocations(locationType:number) {
-    // this._srv.getAllLocations(locationType).subscribe({
-    //   next: (response: any) => {
-    //     this.getpaged = response.lstModel;
-    //   },
-    //   error: (err: any) => {
-
-    //   }
-    // });
-  }
-
-  locationChange(event:any) {
-    this.locationTypeId = event.value;
-    this.getLocations(this.locationTypeId);
+    
   }
 
   // AG GRID
@@ -238,16 +204,27 @@ export class LocationsComponent {
       ? selectedData[0]
       : null;
 
-    if (this.gl.setRowData) {
-      this.detailFlag = true
-    }
   }
 
   blackOutFalse() {
     this.addRowFlag = false;
-    this.searchFlag = false;
-    this.backToYard = false;
-    this.doneForDay = false;
+  }
+
+  save() {
+    let data = {
+      created_at: new Date(),
+      student_name: 'test first',
+      address: 'lorem',
+      phone: '324534256',
+      subject: 2
+    }
+    this.srv.addStudent(data).then((res) => {
+      console.log(res);
+      
+    }).catch((err:any) => {
+      console.log(err);
+      
+    })
   }
 
 }
