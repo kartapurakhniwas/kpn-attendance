@@ -200,7 +200,7 @@
             }
             .float-r {
                 position: relative;
-                width: 110px;
+                width: 96px;
                 float: right;
                 display: flex;
             }
@@ -284,7 +284,7 @@
     }
     .map {
         position: relative;
-        max-height: calc(100vh - 287px) !important;
+        max-height: calc(100vh - 298px) !important;
         overflow: auto;
         border: 1px solid #E9EAEF;
         border-radius: 10.93px;
@@ -408,7 +408,7 @@
         // max-height: calc(100vh - 287px) !important;
         // overflow: auto;
         .fix-height {
-            max-height: calc(100vh - 345px) !important;
+            max-height: calc(100vh - 360px) !important;
             overflow: auto;
         }
         .padding-cstm {

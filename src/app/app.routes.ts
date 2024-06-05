@@ -9,17 +9,22 @@ import { StudentsComponent } from './pages/students/students.component';
 
 export const routes: Routes = [
     {
-        path: 'login',
+        path: '',
         component: LoginComponent
     },
     {
-        path: 'dashboard',
+        path: '',
+        component: UserComponent,
         canActivate: [authGuard],
-        component: DashboardComponent,
-    },
-    {
-        path: 'students',
-        canActivate: [authGuard],
-        component: StudentsComponent
+        children: [
+            {
+                path: 'daily',
+                component: DashboardComponent
+            },
+            {
+                path: 'students',
+                component: StudentsComponent
+            }
+        ]
     }
 ];

@@ -1,69 +1,28 @@
 <div id="header">
     <div class="left">
-        <h2>Locations</h2>
-        <!-- <ag-col-filter [Cols]="columnDefs"></ag-col-filter> -->
-        <button (click)="save()">save</button>
-        
-    </div>
-    <div class="right">
-        <div class="d-flex align-items-center">
-            <label class="form-label me-3">Select Location Type</label>
-            <div class="input-wrap" style="margin-top: 15px;">
-                <!-- <mat-form-field appearance="outline">
-                    <mat-select [(ngModel)]="locationTypeId" (selectionChange)="locationChange($event)">
-                        @for(locationType of locationTypesList; track locationType.locationTypeId) {
-                        <mat-option [value]="locationType.locationTypeId">{{locationType.name}}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field> -->
-            </div>
-        </div>
+        <h2>Students</h2>
     </div>
 </div>
 
 <div class="inner-content-wrap">
-    <div class="filters justify-end">
-        <div class="left">
-            <button mat-button [matMenuTriggerFor]="menu1" class="me-0">Filter Columns <i class="ki-outline ki-down"></i></button>
-            <mat-menu #menu1="matMenu" xPosition="before" class="p-2 pe-3">
-                @for (item of this.gl.updatedColDef; track $index) {
-                    <mat-checkbox  class="d-block" (click)="$event.stopPropagation()"  [checked]="!item.hide" (change)="gl.hiddeShowCol($event, $index, this.gridApi)">{{item.headerName}}</mat-checkbox>
-                    
-                }  
-            </mat-menu>
-        </div>
-        <!-- <div class="right">
-            
-        </div> -->
-    </div>
-         
-    <!-- <button mat-button [matMenuTriggerFor]="menu" class="menu-list mb-2">Menu &nbsp; <i class="ki-outline ki-down me-0"></i></button>
-    <mat-menu #menu="matMenu">
-    <button mat-menu-item><input type="checkbox" class="me-2">Address</button>
-    <button mat-menu-item><input type="checkbox" class="me-2">City</button>
-    <button mat-menu-item><input type="checkbox" class="me-2">State</button>
-    <button mat-menu-item><input type="checkbox" class="me-2">Status</button>
-    <button mat-menu-item><input type="checkbox" class="me-2">Country Name</button>
-    </mat-menu> -->
     <div>
         <ag-grid-angular [rowData]="getpaged" #agGrid id="myGrid" class="ag-theme-balham table-size ag-theme-quartz"
             [columnDefs]="columnDefs" [pagination]="true" [paginationPageSize]="100" [suppressRowClickSelection]="true"
             [rowSelection]="rowSelection" (selectionChanged)="onSelectionChanged()" (gridReady)="onGridReady($event)"
-            [defaultColDef]="defaultColDef" (displayedColumnsChanged)="this.gl.onDisplayedColumnsChanged($event, this.initialColumnDefs, this.columnDefs, 'locationGridColOrder')" 
-            (columnResized)="this.gl.onDisplayedColumnsChanged($event, this.initialColumnDefs, this.columnDefs, 'locationGridColOrder')"  (filterChanged)="onFilterChanged()"></ag-grid-angular>
+            [defaultColDef]="defaultColDef" 
+              (filterChanged)="onFilterChanged()"></ag-grid-angular>
     </div>
     <div class="btn-flow">
-        <button mat-fab class="primary" (click)="addRowFlag = true">
+        <button mat-fab class="primary" (click)="addNew()">
             <i class="ki-duotone ki-plus"></i>
         </button>
-        <!-- <button mat-fab class="secondary" (click)="searchFlag = true">
-            <i class="ki-duotone ki-magnifier "> <span class="path1"></span> <span class="path2"></span></i>
-        </button> -->
     </div>
 </div>
 
 <div *ngIf="addRowFlag" (click)="blackOutFalse()" class="blackout"></div>
 
 <div [@openCloseSearch]="addRowFlag ? true : false" class="slide" style="max-width: 350px">
-    <students-add-component></students-add-component>
+    @if(addRowFlag) {
+        <students-add-component></students-add-component>
+    }
 </div>

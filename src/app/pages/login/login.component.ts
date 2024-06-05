@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../core/services/master/auth.service';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { StorageService } from '../../core/services/master/storage.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,8 @@ import { StorageService } from '../../core/services/master/storage.service';
     MatFormFieldModule,
     ReactiveFormsModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
@@ -24,11 +27,41 @@ export class LoginComponent {
   password: string = '';
   data: any[] = []; // Initialize data as empty array
   accessToken: any;
+  passCheck:boolean = false;
+
+  userForm = new FormGroup({
+    email: new FormControl("", Validators.required),
+    password: new FormControl("", Validators.required),
+  }) as any;
+  // loginLoader: boolean = false;
 
   constructor(
     private supabase: AuthService,
-    private st: StorageService
-  ) {}
+    private st: StorageService,
+    private _snackBar: MatSnackBar
+  ) {
+    this.supabase.onStateChange();
+  }
+
+  onSubmit() {
+    if(this.userForm.valid) {
+      this.supabase.signInWithPassword(this.userForm.value);
+    } else {
+      for (let i in this.userForm.controls) {
+        this.userForm.controls[i].markAsTouched();
+      }
+      this._snackBar.open("Please fill required fields", "Okay", { 'duration': 3000 });
+    }
+  }
+
+  // passChange() {
+  //   if (this.passCheck == 'text') {
+  //     this.passCheck = 'password';
+  //   } else {
+  //     this.passCheck = 'text';
+  //   }
+  // }
+  
 
   // async onSubmit() {
   //   try {
@@ -60,7 +93,4 @@ export class LoginComponent {
   //   }    
   // }
 
-  onSubmit() {
-    this.supabase.signInWithPassword(this.email, this.password);
-  }
 }

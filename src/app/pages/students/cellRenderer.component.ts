@@ -12,6 +12,7 @@ import { GlobalVariable } from '../../core/services/global.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationComponent } from '../../core/shared/widgets/popup/confirmation';
 import { StudentsComponent } from './students.component';
+import { StudentsService } from '../../core/services/students/students.service';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class TotalValueRendererMenu implements ICellRendererAngularComp {
   storedValue: any;
 
   constructor(private students: StudentsComponent,private gl: GlobalVariable, private nav: Router,
-     private _snackBar: MatSnackBar, private dialog: MatDialog
+     private _snackBar: MatSnackBar, private dialog: MatDialog, public srv: StudentsService
   ) {}
 
   // gets called once before the renderer is used
@@ -68,7 +69,9 @@ export class TotalValueRendererMenu implements ICellRendererAngularComp {
 
   edit() {
     this.gl.setRowData = this.value.data;
-    this.nav.navigateByUrl('/locations/add');
+    this.students.addRowFlag = true;
+    
+    
   }
 
   delete() {
@@ -82,16 +85,25 @@ export class TotalValueRendererMenu implements ICellRendererAngularComp {
         dialogRef.afterClosed().subscribe((result:any) => {
           if (result == 'OK') {
             const self = this;
-            // self.srv.deleteLocation(this.value.data.id).subscribe((m:any) => {
-            //   if (m.success) {
-            //     this.locations.refresh();
-            //         this.gl.setRowData = null;
-            //         this._snackBar.open("Deleted Successfully", "Okay", { 'duration': 3000 });
-            //   }
-            // });
+            this.srv.deleteStudent(this.value.data.id).then((res) => {
+              this._snackBar.open('Deleted Successfully!', 'Okay', {
+                duration: 3000,
+              });
+              this.students.refresh();
+            }).catch((err:any) => {
+              
+            })
           }
         });
       }
+
+    //   delete() {
+    //     this.srv.getStudents().then((res) => {
+    //       this.getpaged = res;
+    //     }).catch((err:any) => {
+          
+    //     })
+    // }
 
 //   view() {
 //     this.nav.navigateByUrl('/payment/view-receipt');

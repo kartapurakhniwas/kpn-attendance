@@ -30,9 +30,13 @@
             font-size: 13px;
             font-weight: 600;
             color: $light-text;
-            margin-left: 12px;
-            margin-right: 12px;
+            margin-left: 10px;
+            margin-right: 10px;
             transition: 0.5s;
+        }
+        mat-slide-toggle {
+            margin-left: 10px;
+            margin-right: 10px;
         }
         :hover {
             color:#333;

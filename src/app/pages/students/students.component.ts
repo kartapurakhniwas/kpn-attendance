@@ -79,19 +79,6 @@ export class StudentsComponent {
     public srv: StudentsService
   ) {
 
-    this.valueGetters = {
-      snoValueGetter: (params:any) => params.node.rowIndex + 1,
-      addressValueGetter: (params:any) => params.data.addressMappings[0].address.addressTitle,
-      cityNameValueGetter: (params:any) => params.data.addressMappings[0].address.cityName,
-      stateNameValueGetter: (params:any) => params.data.addressMappings[0].address.stateName,
-      countryNameValueGetter: (params:any) => params.data.addressMappings[0].address.countryName,
-      locationTypeNameValueGetter: (params:any) => params.data.locationTypes[0].locationTypeName,
-  };
-
-  this.cellRenderers = {
-    actionCellRendrer: TotalValueRendererMenu
-  }
-
     this.columnDefs = [
 
       {
@@ -100,49 +87,35 @@ export class StudentsComponent {
         checkboxSelection: true,
         sortingOrder: ["asc", "desc"],
         pinned: 'left',
-        valueGetterIdentifier: 'snoValueGetter',
+        valueGetter: (params:any) => params.node.rowIndex + 1,
       },
       { 
         field: 'action', 
         headerName: 'Action', 
-        cellRendererIdentifier: 'actionCellRendrer', 
+        cellRenderer: TotalValueRendererMenu,
         suppressClickEdit: true,
         cellRendererParams: {
           allowMultipleHits: false,
-      },
+        },
         pinned: 'left', 
         width: 90
       },
-      { field: 'name', headerName: 'Location Name', width: 110, },
+      { field: 'student_name', headerName: 'Student Name', width: 110, },
       { 
         field: 'address', 
         headerName: 'Address', 
         width: 140,
-        valueGetterIdentifier: 'addressValueGetter',
       },
       { 
-        field: 'city', 
-        headerName: 'City', 
+        field: 'subject', 
+        headerName: 'Subject', 
+        width: 140
+      },
+      
+      { 
+        field: 'phone', 
+        headerName: 'Phone', 
         width: 140, 
-        valueGetterIdentifier: 'cityNameValueGetter',
-      },
-      { 
-        field: 'state', 
-        headerName: 'State', 
-        width: 140, 
-        valueGetterIdentifier: 'stateNameValueGetter',
-      },
-      { 
-        field: 'countryName', 
-        headerName: 'Country Name', 
-        width: 140, 
-        valueGetterIdentifier: 'countryNameValueGetter',
-      },
-      { 
-        field: 'status', 
-        headerName: 'Status', 
-        valueGetterIdentifier: 'locationTypeNameValueGetter',
-        width: 122 
       },
     ];
     this.rowSelection = "multiple";
@@ -162,7 +135,11 @@ export class StudentsComponent {
   selectedColumns!: any[];
 
   refresh() {
-    
+      this.srv.getStudents().then((res) => {
+        this.getpaged = res;
+      }).catch((err:any) => {
+        
+      })
   }
 
   // AG GRID
@@ -189,11 +166,11 @@ export class StudentsComponent {
 
     // to save column defs
     this.initialColumnDefs = this.gridApi.getColumnDefs();
-    let a:any = localStorage.getItem('locationGridColOrder');
-    if (a == null || undefined) {
-      localStorage.setItem('locationGridColOrder', JSON.stringify(this.initialColumnDefs ));
-    }
-    this.gl.setColmDefs(this.gridApi, 'locationGridColOrder', this.valueGetters, this.cellRenderers);
+    // let a:any = localStorage.getItem('locationGridColOrder');
+    // if (a == null || undefined) {
+    //   localStorage.setItem('locationGridColOrder', JSON.stringify(this.initialColumnDefs ));
+    // }
+    // this.gl.setColmDefs(this.gridApi, 'locationGridColOrder', this.valueGetters, this.cellRenderers);
   }
 
   onSelectionChanged() {
@@ -225,6 +202,11 @@ export class StudentsComponent {
       console.log(err);
       
     })
+  }
+
+  addNew() {
+    this.addRowFlag = true;
+    this.gl.setRowData = null
   }
 
 }

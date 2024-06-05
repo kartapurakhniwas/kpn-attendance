@@ -105,7 +105,7 @@ table {
 .form-control.ng-touched {
   &.ng-invalid {
     border-color: #fe8686;
-    box-shadow: 0 0 0 0.25rem rgb(254 134 134 / 30%);
+    // box-shadow: 0 0 0 0.25rem rgb(254 134 134 / 30%);
   }
 }
 
@@ -160,5 +160,14 @@ ag-grid-angular.table-size {
   .mat-expansion-panel-header {
       height: var(--mat-expansion-header-collapsed-state-height) !important;
       background: var(--mat-expansion-header-hover-state-layer-color) !important;
+  }
+}
+.note h5 {
+  font-size: 12px;
+  font-weight: 700;
+}
+table {
+  .thead {
+    background-color: #f1f5fa !important;
   }
 }

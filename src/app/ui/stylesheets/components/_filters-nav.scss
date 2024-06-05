@@ -33,27 +33,7 @@
                     color: #333;
                 }
             }
-            button.filter-btn {
-                background: #fff;
-                border: none;
-                padding: 5px 6px;
-                border-radius: 2px;
-                font-size: 10.2px;
-                font-weight: 600;
-                border: 1px solid #d1d8e1;
-                font-family: "Inter Tight" !important;
-                @include transition;
-                cursor: pointer;
-                &:hover {
-                    background-color: darken($color: #dbe2eb, $amount: 7);
-                }
-                &.active {
-                    background-color: #c4d0de;
-                    color: #394e66;
-                    padding: 7px 6px;
-                    font-size: 10.6px;
-                }
-            }
+            
             .action_icon_btn {
                 background-color: $sc-primary !important;
                 color: #ffffff !important;
@@ -61,6 +41,27 @@
         }
         .right {
             margin-top: 3px;
+        }
+        button.filter-btn {
+            background: #fff;
+            border: none;
+            padding: 5px 6px;
+            border-radius: 2px;
+            font-size: 10.2px;
+            font-weight: 600;
+            border: 1px solid #d1d8e1;
+            font-family: "Inter Tight" !important;
+            @include transition;
+            cursor: pointer;
+            &:hover {
+                background-color: darken($color: #dbe2eb, $amount: 7);
+            }
+            &.active {
+                background-color: #c4d0de;
+                color: #394e66;
+                padding: 7px 6px;
+                font-size: 10.6px;
+            }
         }
     }
 }

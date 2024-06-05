@@ -17,13 +17,26 @@ export class AuthService {
       environment.supabaseKey
     );
 
+    // this.supabase.auth.onAuthStateChange((event, session:any) => {
+    //   console.log('event', event);
+    //   console.log('session', session);
+
+    //   localStorage.setItem('session', JSON.stringify(session?.user));
+    //   if(session?.user) {
+    //     this.router.navigateByUrl('/dashboard');
+    //   }
+
+    // });
+  }
+
+  public onStateChange() {
     this.supabase.auth.onAuthStateChange((event, session:any) => {
       console.log('event', event);
       console.log('session', session);
 
       localStorage.setItem('session', JSON.stringify(session?.user));
       if(session?.user) {
-        this.router.navigateByUrl('/students');
+        this.router.navigateByUrl('/daily');
       }
 
     });
@@ -34,13 +47,13 @@ export class AuthService {
     return user === 'undefined' ? false : true;
   }
 
-  async signInWithPassword(email:any, password:any) {
-    await this.supabase.auth.signInWithPassword({
-      email: email,
-      password: password
-    })
+  async signInWithPassword(data:any) {
+    await this.supabase.auth.signInWithPassword(data)
     .then((m) => {
-      console.log(m,'m');
+      console.log(m);
+      return true;
+    }).catch((m) => {
+      return false;
     })
   }
 

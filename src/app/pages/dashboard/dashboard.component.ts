@@ -141,7 +141,7 @@ export class DashboardComponent {
     .then(() => {
       console.log('logout');
       
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/')
     })
     .catch((err:any) => {
       alert('error' + err)
