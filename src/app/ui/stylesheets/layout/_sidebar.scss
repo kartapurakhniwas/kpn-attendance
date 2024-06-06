@@ -44,10 +44,19 @@
             }
         }
         .company-logo {
-            img {
+            .img-wrap {
+                display: inline-block;
+                padding: 4px;
+                border-radius: 50%;
+                background: #0f172a;
+                border: none;
                 height: 45px;
                 width: 45px;
-                display: inline-block;
+                img {
+                    width: auto;
+                    height: 100%;
+                    border: none;
+                }
             }
             p, small {
                 display: none;
@@ -126,13 +135,17 @@
     .company-logo {
         text-align: center;
         margin-bottom: 20px;
-        img {
-            height: 93px;
-            width: 93px;
+        .img-wrap {
+            width: 90px;
+            height: 90px;
+            background: #0f172a;
             margin: auto;
             border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid #94a3b8;
+            padding: 11px;
+            img {
+                height: 100%;
+                width: auto;
+            }
         }
         p {
             font-size: 16px;

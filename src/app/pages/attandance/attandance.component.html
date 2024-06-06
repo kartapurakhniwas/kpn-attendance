@@ -1,0 +1,120 @@
+<div id="header">
+  <div class="left">
+    <h2>@if(gl.setRowData){Update} @else {Add} Location</h2>
+  </div>
+  <div class="right">
+    <div style="text-align: right">
+      <button mat-button class="me-2" routerLink="/locations">Cancel</button>
+      <button mat-raised-button mat-accent color="primary" (click)="save()">
+        @if(this.gl.setRowData) { Update } @else { Save }
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="inner-content-wrap full-width px-4" [formGroup]="Form">
+  <mat-accordion>
+    <mat-expansion-panel class="mb-3" [expanded]="true">
+      <h2>Search</h2>
+      <div class="row p-r-55" >
+        <div class="col-3">
+          <div class="input-wrap">
+            <label class="form-label">Student</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="student_id">
+                @for (item of allStudents; track $index) {
+                  <mat-option [value]="item.id">{{item.student_name}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="input-wrap">
+            <label class="form-label">Date</label>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="picker" formControlName="created_at" />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="input-wrap">
+            <label class="form-label">&nbsp;</label>
+            <button mat-button color="primary" (click)="search()">
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+      <h2>Attandance</h2>
+      <div class="input-wrap">
+        <mat-checkbox>Present</mat-checkbox>
+      </div>
+      <div class="row p-r-55">
+        <div class="col-3">
+          <div class="input-wrap">
+            <mat-checkbox>Is Late</mat-checkbox>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="input-wrap">
+            <label class="form-label">Reason of late</label>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Reason of late" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row p-r-55">
+        <div class="col-3">
+          <div class="input-wrap">
+            <mat-checkbox>On intemated leave</mat-checkbox>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="input-wrap">
+            <label class="form-label">Reason of leave</label>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Reason of leave" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row p-r-55">
+        <div class="col-3">
+          <div class="input-wrap">
+            <mat-checkbox>No Homework</mat-checkbox>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="input-wrap">
+            <label class="form-label">Reason for not doing</label>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Reason for not doing" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row p-r-55">
+        <div class="col-3">
+          <div class="input-wrap">
+            <mat-checkbox>Daily weak performance</mat-checkbox>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="input-wrap">
+            <label class="form-label">Performance Remarks</label>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Performance Remarks" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

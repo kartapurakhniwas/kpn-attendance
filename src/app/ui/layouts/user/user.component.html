@@ -1,8 +1,20 @@
 <div id="sidebar" [class.collapsed]="sideFlag && !hovered">
   <div class="logo">
     <div>
-      <img src="../../../assets/images/logo-grey.png" class="b" alt="" width="174" height="36">
-      <img src="../../../assets/images/a.png" class="a" alt="" width="" height="">
+      <img
+        src="../../../assets/images/logo-grey.png"
+        class="b"
+        alt=""
+        width="174"
+        height="36"
+      />
+      <img
+        src="../../../assets/images/a.png"
+        class="a"
+        alt=""
+        width=""
+        height=""
+      />
     </div>
     <div>
       <button mat-icon-button>
@@ -23,33 +35,46 @@
       </button>
     </div>
     <button (click)="sideFlag = !sideFlag" mat-icon-button class="menu-btn">
-     @if (sideFlag) {
-        <i class="ki-duotone ki-burger-menu-6"></i>
+      @if (sideFlag) {
+      <i class="ki-duotone ki-burger-menu-6"></i>
       } @else {
-        <i class="ki-duotone ki-burger-menu-5"></i>
+      <i class="ki-duotone ki-burger-menu-5"></i>
       }
     </button>
   </div>
   <div class="company-logo">
-    <img src="../../../assets/images/logo.png" alt="">
+    <div class="img-wrap">
+      <img src="../../../assets/images/logo.png" alt="" />
+    </div>
     <p>Gurudwara Karta Purakh Niwas Sahib</p>
     <small>help&#64;kartapurakhniwas.com</small>
   </div>
   <mat-accordion class="menu">
-    
-    <mat-expansion-panel hideToggle routerLink="/daily" matTooltip="Daily Attandance" matTooltipPosition="right" routerLinkActive="active" >
+    <mat-expansion-panel
+      hideToggle
+      routerLink="/dashboard"
+      matTooltip="Dashboard"
+      matTooltipPosition="right"
+      routerLinkActive="active"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title>
           <i class="ki-duotone ki-abstract-25">
             <span class="path1"></span>
             <span class="path2"></span>
           </i>
-          <span>Daily Attandance</span>
+          <span>Dashboard</span>
         </mat-panel-title>
       </mat-expansion-panel-header>
     </mat-expansion-panel>
-    
-    <mat-expansion-panel hideToggle routerLink="/students" matTooltip="Students" matTooltipPosition="right" routerLinkActive="active" >
+
+    <mat-expansion-panel
+      hideToggle
+      routerLink="/students"
+      matTooltip="Students"
+      matTooltipPosition="right"
+      routerLinkActive="active"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title>
           <i class="ki-duotone ki-user-square">
@@ -61,11 +86,37 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
     </mat-expansion-panel>
-    
+
+    <mat-expansion-panel
+      hideToggle
+      routerLink="/attandance"
+      matTooltip="Attandance"
+      matTooltipPosition="right"
+      routerLinkActive="active"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <i class="ki-duotone ki-check-square">
+            <span class="path1"></span>
+            <span class="path2"></span>
+          </i>
+          <span>Attandance</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
   </mat-accordion>
   <div class="sidebar-footer">
-    <a href="javasrcipt:void(0)" matTooltipPosition="right" matTooltip="Log Out" (click)="logout()" class="gotoLink mt-3"> <span>Logout</span>
-      <i class="ki-duotone ki-arrow-up-refraction"><span class="path1"></span><span class="path2"></span></i>
+    <a
+      href="javasrcipt:void(0)"
+      matTooltipPosition="right"
+      matTooltip="Log Out"
+      (click)="logout()"
+      class="gotoLink mt-3"
+    >
+      <span>Logout</span>
+      <i class="ki-duotone ki-arrow-up-refraction"
+        ><span class="path1"></span><span class="path2"></span
+      ></i>
     </a>
   </div>
 </div>
