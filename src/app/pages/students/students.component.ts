@@ -82,7 +82,7 @@ export class StudentsComponent {
     this.columnDefs = [
 
       {
-        field: 'S_NO', headerName: ' S. NO.', width: 85, 
+        field: 'S_NO', headerName: ' S. NO.', width: 95, 
         headerCheckboxSelection: true,
         checkboxSelection: true,
         sortingOrder: ["asc", "desc"],
@@ -100,7 +100,7 @@ export class StudentsComponent {
         pinned: 'left', 
         width: 90
       },
-      { field: 'student_name', headerName: 'Student Name', width: 110, },
+      { field: 'student_name', headerName: 'Student Name', width: 170, },
       { 
         field: 'address', 
         headerName: 'Address', 
@@ -109,7 +109,21 @@ export class StudentsComponent {
       { 
         field: 'subject', 
         headerName: 'Subject', 
-        width: 140
+        width: 140,
+        valueGetter: (params:any) => {
+          switch (params.data.subject) {
+            case 2  :
+              return 'Frontend';
+              case 3  :
+                return 'Backend';
+                case 4  :
+                  return 'Basics';
+                  case 5  :
+                    return 'Typing';
+            default:
+              return '-';
+          }
+        },
       },
       
       { 

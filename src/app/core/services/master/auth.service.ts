@@ -36,7 +36,7 @@ export class AuthService {
 
       localStorage.setItem('session', JSON.stringify(session?.user));
       if(session?.user) {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/attandance-table');
       }
 
     });

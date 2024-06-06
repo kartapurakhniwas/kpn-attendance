@@ -222,7 +222,20 @@ input.main-search::placeholder {
 //     flex: auto;
 // }
 
-.inner-content-wrap h2 {
-    margin-bottom: 12px;
-    margin-top: 17px;
+.inner-content-wrap {
+    h2 {
+        margin-bottom: 12px;
+        margin-top: 17px;
+    }
+    &>.table-responsive {
+        background: white;
+        border-radius: 5px;
+        max-height: calc(100vh - 100px);
+        td {
+            padding: 4px 18px !important;
+        }
+        th {
+            padding: 15px 18px !important;
+        }
+    }
 }

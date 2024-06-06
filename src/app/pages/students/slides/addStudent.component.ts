@@ -60,8 +60,8 @@ import { GlobalVariable } from '../../../core/services/global.service';
                   <mat-select formControlName="subject">
                     <mat-option [value]="2">Frontend</mat-option>
                     <mat-option [value]="3">Backend</mat-option>
-                    <mat-option [value]="3">Basics</mat-option>
-                    <mat-option [value]="4">Typing</mat-option>
+                    <mat-option [value]="4">Basics</mat-option>
+                    <mat-option [value]="5">Typing</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>

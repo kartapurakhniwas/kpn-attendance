@@ -32,7 +32,7 @@ import { StudentsService } from '../../core/services/students/students.service';
     MatTooltipModule, MatSlideToggleModule, MatTabsModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './attandance.component.html'
 })
-export class AttandanceComponent {
+export class AttandanceTableComponent {
   detailFlag: boolean = true; // should be false
   columnDefs: any;
   rowSelection: any;
@@ -50,6 +50,7 @@ export class AttandanceComponent {
   rateZoneList: any;
   locationTypesList: any;
   allStudents: any;
+  getAttandance: any = [];
 
   constructor(public gl: GlobalVariable,private _snackBar: MatSnackBar,
    private nav: Router, private srv: AttandanceService, private students:StudentsService) {
@@ -59,32 +60,20 @@ export class AttandanceComponent {
 
   ngOnInit(): void {
     this.refresh();  
-    // if (this.gl.setRowData) {
-    //   this.countryChange({value: this.gl.setRowData.addressMappings[0].address.countryId});
-    // }
-    
   }
 
   refresh() {
     this.getStudents();
+    this.getAllAttandance();
   }
 
-    getStudents() {
-      this.students.getStudents().then((res:any) => {
-        this.allStudents = res;
-      }).catch((err:any) => {
-        
-      })
-    }
-
-  // getById(data:any) {
-  //   let self = this;
-  //   self.srv.getLocationById(data.id).subscribe((m:any) => {
-  //     if (m.success) {
-  //       this.setValue(m.model);
-  //     }
-  //   });
-  // }
+  getStudents() {
+    this.students.getStudents().then((res:any) => {
+      this.allStudents = res;
+    }).catch((err:any) => {
+      
+    })
+  }
 
   search() {
     if(this.Form.valid) {
@@ -99,8 +88,10 @@ export class AttandanceComponent {
 
   Form = new FormGroup({
     created_at: new FormControl(new Date()),
-    student_id: new FormControl(null as any, Validators.required),
+    student_id: new FormControl(0),
+    student_name: new FormControl(''),
     subject: new FormControl(0),
+    subject_name: new FormControl(''),
     daily_attandance: new FormControl(false),
     coming_late: new FormControl(false),
     late_reason: new FormControl(''),
@@ -109,7 +100,7 @@ export class AttandanceComponent {
     daily_homework: new FormControl(false),
     daily_homework_status: new FormControl(''),
     performance: new FormControl(false),
-    performance_remarks: new FormControl('')
+    performance_remarks: new FormControl(''),
   }) as any;
 
   setValue(data:any) {
@@ -129,29 +120,70 @@ export class AttandanceComponent {
   }
  
   save() {
-    let data = JSON.parse(JSON.stringify(this.Form.value));
-    if (this.Form.valid) {
-      let self = this;
-      // if(this.gl.setRowData) {
-      //   self.srv.UpdateLocation(data).subscribe((m:any) => {
-      //     if (m.success) {
-      //       this.nav.navigateByUrl('/locations');
-      //       this._snackBar.open("Updated Successfully!", "Okay", { 'duration': 3000 });
-      //     } else {
-      //       this._snackBar.open("Something went wrong!", "Okay", { 'duration': 3000 });
-      //     }
-      //   });
-      // } else {
-      //   self.srv.AddLocation(data).subscribe((m:any) => {
-      //     if (m.success) {
-      //       this.nav.navigateByUrl('/locations');
-      //       this._snackBar.open("Added Successfully!", "Okay", { 'duration': 3000 });
-      //     } else {
-      //       this._snackBar.open("Something went wrong!", "Okay", { 'duration': 3000 });
-      //     }
-      //   });
-      // }
-    }
+    this.getAttandance.forEach((element:any, $index:any) => {
+      this.srv.update(element, element.id).then((res) => {
+        this._snackBar.open('Added Successfully', 'Okay', {
+          duration: 3000,
+        });
+        if (($index + 1) == this.getAttandance.length) {
+          this.getAllAttandance();
+          this._snackBar.open('Saved Successfully', 'Okay', {
+            duration: 3000,
+          });
+        }
+      }).catch((err:any) => {
+        this._snackBar.open('Something went wrong!', 'Okay', {
+          duration: 3000,
+        });
+      })
+    });
+  }
+
+  generate() {
+    this.allStudents.forEach((element:any, $index: any) => {
+        let data = this.Form.value;
+        data.student_id = element.id;
+        switch (element.subject) {
+          case 2:
+            data.subject_name = 'Frontend';
+            break;
+            case 3:
+              data.subject_name = 'Backend';
+              break;
+              case 4:
+                data.subject_name = 'Basics';
+                break;
+                case 5:
+                  data.subject_name = 'Typing';
+                  break;
+        }
+        data.student_name = element.student_name;
+        this.srv.add(data).then((res) => {
+          if (($index + 1) == this.allStudents.length) {
+            this.getAllAttandance();
+            this._snackBar.open('Added Successfully', 'Okay', {
+              duration: 3000,
+            });
+          }
+        }).catch((err:any) => {
+          this._snackBar.open('Something went wrong!', 'Okay', {
+            duration: 3000,
+          });
+        })
+    });
+  }
+
+  getAllAttandance() {
+    let date = new Date();
+    const startOfDay = new Date(date);
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date(date);
+    endOfDay.setHours(23, 59, 59, 999);
+    this.srv.getAttandanceToday(startOfDay, endOfDay).then((res:any) => {
+      this.getAttandance = res;
+    }).catch((err:any) => {
+      
+    })
   }
 
 

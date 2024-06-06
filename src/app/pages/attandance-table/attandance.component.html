@@ -1,0 +1,64 @@
+<div id="header">
+  <div class="left">
+      <h2>Attandance</h2>
+  </div>
+  <div class="right">
+    <button mat-button color="primary" (click)="getAllAttandance()">Refresh attandance</button>
+      <button mat-button color="primary" (click)="save()">Save</button>
+  </div>
+</div>
+
+@if(getAttandance.length > 0) {
+  <div class="inner-content-wrap">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Subject Name</th>
+            <th>Present</th>
+            <th>Not Done Homework</th>
+            <th>No Homework Reason</th>
+            <th>Performance</th>
+            <th>Performance Remarks</th>
+            <th>Is Late</th>
+            <th>Late Reason</th>
+            <th>On Leave</th>
+            <th>Leave Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of getAttandance; track $index) {
+            <tr>
+              <td>{{item.student_name}}</td>
+              <td>{{item.subject_name}}</td>
+              <td><mat-checkbox [(ngModel)]="item.daily_attandance">Present</mat-checkbox></td>
+              <td><mat-checkbox [(ngModel)]="item.daily_homework">Homework Not Done</mat-checkbox></td>
+              <td>
+                  <input [disabled]="!item.daily_homework" [(ngModel)]="item.daily_homework_status" placeholder="Reason for not doing" />
+              </td>
+              <td><mat-checkbox [(ngModel)]="item.performance">Poor Performance</mat-checkbox></td>
+              <td>
+                  <input [disabled]="!item.performance" [(ngModel)]="item.performance_remarks" placeholder="Performance Remarks" />
+              </td>
+              <td><mat-checkbox [(ngModel)]="item.coming_late">Is Late</mat-checkbox></td>
+              <td>
+                  <input [disabled]="!item.coming_late" [(ngModel)]="item.late_reason" placeholder="Reason for late" />
+              </td>
+              <td><mat-checkbox [(ngModel)]="item.on_leave">On Leave</mat-checkbox></td>
+              <td>
+                  <input [disabled]="!item.on_leave" [(ngModel)]="item.leave_reason" placeholder="Reason for leave" />
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+} @else {
+  <div class="mt-5 text-center">
+    <button mat-button color="primary" (click)="generate()">Generate Today's Attandance Sheet</button>
+  </div>
+}
+

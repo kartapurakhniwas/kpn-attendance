@@ -1,12 +1,12 @@
 <div id="header">
   <div class="left">
-    <h2>@if(gl.setRowData){Update} @else {Add} Location</h2>
+    <h2>Attandance</h2>
   </div>
   <div class="right">
     <div style="text-align: right">
       <button mat-button class="me-2" routerLink="/locations">Cancel</button>
       <button mat-raised-button mat-accent color="primary" (click)="save()">
-        @if(this.gl.setRowData) { Update } @else { Save }
+        Save
       </button>
     </div>
   </div>
@@ -53,7 +53,7 @@
       </div>
       <h2>Attandance</h2>
       <div class="input-wrap">
-        <mat-checkbox>Present</mat-checkbox>
+       
       </div>
       <div class="row p-r-55">
         <div class="col-3">

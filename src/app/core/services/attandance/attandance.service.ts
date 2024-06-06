@@ -16,9 +16,9 @@ export class AttandanceService {
     )
   }
 
-  async addStudent(formdata:any) {
+  async add(formdata:any) {
     try {
-      const {data, error} = await this.supabase.from('attandance').insert(formdata);
+      const {data, error} = await this.supabase.from('daily_progress').insert(formdata);
       if(error) {
         alert(error.message);
       }
@@ -29,11 +29,14 @@ export class AttandanceService {
     }
   } 
 
-  async getAttandance() {
+  async getAttandanceToday(startOfDay:any, endOfDay:any) {
     try {
       const {data, error} = await this.supabase
-      .from('attandance')
-      .select('*');
+      .from('daily_progress')
+      .select('*')
+      // .eq('created_at', date);
+      .gte('created_at', startOfDay.toISOString())
+      .lte('created_at', endOfDay.toISOString());
       if(error) {
         alert(error.message);
       }
@@ -46,16 +49,16 @@ export class AttandanceService {
 
   async deleteStudent(id:number) {
     const data = await this.supabase
-      .from('attandance')
+      .from('daily_progress')
       .delete()
       .eq('id', id);
       return data;
   } 
 
-  async updateStudent(updates: any, id: number,): Promise<any> {
+  async update(updates: any, id: number,): Promise<any> {
     try {
       const { data, error } = await this.supabase
-        .from('attandance')
+        .from('daily_progress')
         .update(updates)
         .eq('id', id);
       if (error) {
