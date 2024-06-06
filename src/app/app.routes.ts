@@ -26,11 +26,11 @@ export const routes: Routes = [
                 component: StudentsComponent
             },
             {
-                path: 'attandance',
+                path: 'attendance',
                 component: AttandanceComponent
             },
             {
-                path: 'attandance-table',
+                path: 'attendance-table',
                 component: AttandanceTableComponent
             },
             
